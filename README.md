@@ -55,7 +55,19 @@ public class MainActivity extends AppCompatActivity {
 
 I `activity_second.xml` skapas nu en textView som kommer ta emot en text sträng från _MainActivity_ när intenten skickas. 
 
-
+```
+<TextView
+    android:id="@+id/secondactivity"                // ID för att hitta denna textView senare
+    tools:text="this is text"                       // en temporär text, som inte kommer att synnas i applicationen 
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="parent"
+    android:gravity="center"                        // centrerar texten i mitten av skärmen
+    />
+```
 
 
 
