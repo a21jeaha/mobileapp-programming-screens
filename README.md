@@ -70,12 +70,12 @@ toSecondActivity.setOnClickListener(new View.OnClickListener() {   // en lyssnar
         startActivity(intent); // intenten activeras!!
     }
 ```
-I `activity_second.xml` skapas nu en textView som kommer ta emot en text sträng från _MainActivity_ när intenten skickas. 
+Det fortsatta arbetet utförs i `activity_second.xml` där en textView skapas som senare tar emot text strängen skickat från _MainActivity_ via intenten. 
 
 ```
 <TextView
     android:id="@+id/secondactivity"                // ID för att hitta denna textView senare
-    tools:text="this is text"                       // en temporär text, som inte kommer att synnas i applicationen 
+    tools:text="this is text"                       // en temporär text, som inte kommer att synnas i applicationen, den text som kommer synnas är den sträng som skickas via intenten 
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     app:layout_constraintBottom_toBottomOf="parent"
@@ -85,8 +85,23 @@ I `activity_second.xml` skapas nu en textView som kommer ta emot en text sträng
     android:gravity="center"                        // centrerar texten i mitten av skärmen
     />
 ```
+```
+public class SecondActivity extends AppCompatActivity {
+    TextView textView;                                                   // en TextView deklareras 
 
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_second);
 
+        Bundle extras = getIntent().getExtras();                        // Här initieras en "Bundle", denna kommer användas för att ta emot data from en intent.
+       
+        textView = (TextView) findViewById(R.id.secondactivity);        // TextViewn initieras genom det ID som skapades innan 
+        textView.setText(extras.getString("NAME"));                     // en text sträng sätts i textViewn taget från variabeln extras (Bundle) som i sin tur
+                                                                        // fått denna sträng vid skapandet av intenten som öppna denna sida 
+    }
+}
+```
 **Skriv din rapport här!**
 
 _Du kan ta bort all text som finns sedan tidigare_.
