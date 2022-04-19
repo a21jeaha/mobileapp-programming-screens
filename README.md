@@ -5,7 +5,7 @@ En ny aktivitet skapades
 
 ![](new_activity.jpg)
 
-Efter att denna aktivitet skapades erhölls följande error meddelande när vid startandet av applikationen `AAPT: error: resource android:color/system neutral 1_1000 not found.`, detta löstes genom att i `build.gradel (Module:Screens.app)` göra dessa ändringar.
+Efter att denna aktivitet skapades erhölls följande error meddelande vid startandet av applikationen `AAPT: error: resource android:color/system neutral 1_1000 not found.`, detta löstes genom att i `build.gradel (Module:Screens.app)` göra dessa ändringar.
 
 
 ```
@@ -23,6 +23,40 @@ android {
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 ```
+
+En knapp widget skapas i activity_main.xml genom följande kod, den textview som tidigare fanns i filen raderades. Vidare initieras knappen i `MainActivity.java`.
+
+```
+<Button
+        android:id="@+id/get2activity2"                     // ger knappen ett ID som kommer användas senare 
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/tap_to_go_to_second_activity" // sätter den text som står på knappen 
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="250dp"/>                  // sänker knappen 250dp från toppen av skärmen 
+```
+```
+public class MainActivity extends AppCompatActivity {
+
+    Button toSecondActivity;                                    // en knapp skapas
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+        
+        toSecondActivity = findViewById(R.id.get2activity2);    // knappen associeras till knapp widgeten via dess ID
+    }
+}
+```
+
+I `activity_second.xml` skapas nu en textView som kommer ta emot en text sträng från _MainActivity_ när intenten skickas. 
+
+
+
 
 
 **Skriv din rapport här!**
