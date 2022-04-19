@@ -1,12 +1,11 @@
 
-# Rapport
+# Rapport 4 Activity & Intent
 
 En ny aktivitet skapades 
 
 ![](new_activity.jpg)
 
-Efter att denna aktivitet skapades erhölls följande error meddelande vid startandet av applikationen `AAPT: error: resource android:color/system neutral 1_1000 not found.`, detta löstes genom att i `build.gradel (Module:Screens.app)` göra dessa ändringar.
-
+Följande error meddelande erhölls vid startandet av applikationen `AAPT: error: resource android:color/system neutral 1_1000 not found.`, detta löstes genom att i `build.gradel (Module:Screens.app)` göra dessa ändringar.
 
 ```
 android {
@@ -24,7 +23,7 @@ android {
     }
 ```
 
-En knapp widget skapas i activity_main.xml genom följande kod, den textview som tidigare fanns i filen raderades. Vidare initieras knappen i `MainActivity.java`.
+En knapp widget skapas i activity_main.xml genom koden nedan, den textview som tidigare funnits i filen raderades. Vidare initieras knappen i `MainActivity.java`.
 
 ```
 <Button
@@ -41,14 +40,14 @@ En knapp widget skapas i activity_main.xml genom följande kod, den textview som
 ```
 public class MainActivity extends AppCompatActivity {
 
-    Button toSecondActivity;                                    // en knapp skapas
+    Button toSecondActivity;                                    // en knapp deklareras
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         
-        toSecondActivity = findViewById(R.id.get2activity2);    // knappen associeras till knapp widgeten via dess ID
+        toSecondActivity = findViewById(R.id.get2activity2);    // knappen associeras till knapp-widgeten via dess ID
     }
 }
 ```
