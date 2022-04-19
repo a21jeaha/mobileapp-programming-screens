@@ -105,3 +105,5 @@ public class SecondActivity extends AppCompatActivity {
     }
 }
 ```
+![](activitymain.png)
+![](secondactivity.png)
