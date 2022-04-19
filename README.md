@@ -53,6 +53,23 @@ public class MainActivity extends AppCompatActivity {
 }
 ```
 
+En lyssnare för knappen skapas, där den vid regestrering av knapptryck skickar ett metodanrop till `onButtonTap` varvid en intent skapas och ett string värde kopplas till det. 
+
+```
+toSecondActivity.setOnClickListener(new View.OnClickListener() {   // en lyssnare för knappen initieras
+            @Override
+            public void onClick(View view) {
+                onButtonTap();                 // skickar ett metod anropp till metoden som skickar intent
+            }
+        });
+```
+```
+ private void onButtonTap(){
+        Intent intent = new Intent (this, SecondActivity.class); // här skappas en intent som agerar från DENNA klass, och öppnar klassen SecondActivity.class
+        intent.putExtra("NAME", "Jean-Paul Hanna"); // här skickas en sträng med NYCKEL "NAME", vid mottagar sidan måste samma nyckel anges
+        startActivity(intent); // intenten activeras!!
+    }
+```
 I `activity_second.xml` skapas nu en textView som kommer ta emot en text sträng från _MainActivity_ när intenten skickas. 
 
 ```
@@ -68,7 +85,6 @@ I `activity_second.xml` skapas nu en textView som kommer ta emot en text sträng
     android:gravity="center"                        // centrerar texten i mitten av skärmen
     />
 ```
-
 
 
 **Skriv din rapport här!**
