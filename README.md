@@ -1,5 +1,29 @@
-!!!!!
+
 # Rapport
+
+En ny aktivitet skapades 
+
+![](new_activity.jpg)
+
+Efter att denna aktivitet skapades erhölls följande error meddelande när vid startandet av applikationen `AAPT: error: resource android:color/system neutral 1_1000 not found.`, detta löstes genom att i `build.gradel (Module:Screens.app)` göra dessa ändringar.
+
+
+```
+android {
+    compileSdkVersion 31                /// ändrad från 30 till 31
+    buildToolsVersion "30.0.3"
+
+    defaultConfig {
+        applicationId "com.example.screens"
+        minSdkVersion 16
+        targetSdkVersion 31             /// ändrad från 30 till 31
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+```
+
 
 **Skriv din rapport här!**
 
