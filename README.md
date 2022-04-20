@@ -8,19 +8,17 @@ En ny aktivitet skapades
 Följande error meddelande erhölls vid startandet av applikationen `AAPT: error: resource android:color/system neutral 1_1000 not found.`, detta löstes genom att i `build.gradel (Module:Screens.app)` göra dessa ändringar.
 
 ```
-android {
-    compileSdkVersion 31                /// ändrad från 30 till 31
-    buildToolsVersion "30.0.3"
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
 
-    defaultConfig {
-        applicationId "com.example.screens"
-        minSdkVersion 16
-        targetSdkVersion 31             /// ändrad från 30 till 31
-        versionCode 1
-        versionName "1.0"
+    implementation 'androidx.appcompat:appcompat:1.1.0'
+    implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
+    implementation 'com.google.android.material:material:1.5.0'             // denna rad raderades
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.1'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
+}
 
-        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
-    }
 ```
 
 En knapp widget skapas i activity_main.xml genom koden nedan, den textview som tidigare funnits i filen raderades. Vidare initieras knappen i `MainActivity.java`.
